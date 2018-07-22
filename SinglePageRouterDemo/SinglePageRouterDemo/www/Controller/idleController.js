@@ -1,10 +1,5 @@
-
-var app = angular.module('app', ['ngRoute', 'appMain', 'appSecond', 'appError', 'ngIdle']);
-
-app.controller("routerController", function ($scope, Idle) {
-    $scope.name = "Demo";
-
-
+﻿var app = angular.module('appIdle', ['ngIdle']);
+app.controller('EventsCtrl', function ($scope, Idle) {
     // $scope.events = [];
     $scope.idle = 5;
     $scope.timeout = 5;
@@ -52,48 +47,13 @@ app.controller("routerController", function ($scope, Idle) {
     $scope.$watch('timeout', function (value) {
         if (value !== null) Idle.setTimeout(value);
     });
-
-});
-
-app.config(function ($routeProvider, $locationProvider) {
-
-
-    $routeProvider
-        .when('/', {
-            redirectTo: function () {
-                return 'main';
-            }
-        })
-
-        .when('/main', {
-            templateUrl: '/www/View/main.html',
-            controller: 'mainController'
-        })
-        .when('/second', {
-            templateUrl: '/www/View/second.html',
-            controller: 'secondController'
-        })
-        .otherwise({
-            templateUrl: '/www/View/error.html',
-            controller: 'errorController',
-        })
-
-    // debugger;
-    //console.log($locationProvider.getPath());
-
-    // $locationProvider.html5Mode(true);  // domain/main
-    // $locationProvider.html5Mode(false).hashPrefix(true);
-});
-
-
-app.run(function ($rootScope, Idle, $log, Keepalive) {
+})
+.config(function (IdleProvider, KeepaliveProvider) {
+    //KeepaliveProvider.interval(10);
+    //IdleProvider.windowInterrupt('focus');
+})
+.run(function ($rootScope, Idle, $log, Keepalive) {
     Idle.watch();
 
     $log.debug('[Run] app started.');
 });
-
-
-//.config(function (IdleProvider, KeepaliveProvider) {
-//    //KeepaliveProvider.interval(10);
-//    //IdleProvider.windowInterrupt('focus');
-//})
