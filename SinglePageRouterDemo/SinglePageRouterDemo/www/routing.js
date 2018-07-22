@@ -1,10 +1,5 @@
-/// <reference path="View/main.html" />
-/// <reference path="Controller/mainController.js" />
-/// <reference path="Controller/mainController.js" />
-/// <reference path="Controller/mainController.js" />
 
-
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'appMain', 'appSecond', 'appError']);
 
 app.controller("routerController", function ($scope) {
     $scope.name = "Demo";
@@ -14,7 +9,13 @@ app.controller("routerController", function ($scope) {
 app.config(function ($routeProvider, $locationProvider) {
 
 
-    $routeProvider       
+    $routeProvider
+        .when('/', {
+            redirectTo: function () {
+                return 'main';
+            }
+        })
+
         .when('/main', {
             templateUrl: '/www/View/main.html',
             controller: 'mainController'
@@ -28,33 +29,12 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'errorController',
         })
 
+   // debugger;
+    //console.log($locationProvider.getPath());
 
     // $locationProvider.html5Mode(true);  // domain/main
     // $locationProvider.html5Mode(false).hashPrefix(true);
 })
-
-
-
-//app.controller('mainController', ['$scope', '$log', '$location', function ($scope, $log, $location){
-//    $log.info($location.path());
-//}]);
-
-
-app.controller('mainController', function ($scope) {
-    $scope.firstName = "Zidane";
-    $scope.lastName = "Lee"
-});
-
-
-app.controller('secondController', function ($scope) {
-    $scope.mobilePhone = "0906 440 368";
-    $scope.email = "huuvi168@gmail.com";
-});
-
-
-app.controller('errorController', function ($scope) {
-    $scope.msg = "failed";
-});
 
 
 
