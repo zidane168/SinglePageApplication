@@ -8,14 +8,17 @@
     @Scripts.Render("~/bundles/modernizr")
 
     
-
-    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/www/routing.js"></script>
     <link href="~/www/css/style.css" rel="stylesheet" />
+
+    <!-- include angularjs controller -->
+    <script src="~/www/Controller/mainController.js"></script>
+    <script src="~/www/Controller/secondController.js"></script>
+    <script src="~/www/Controller/errorController.js"></script>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -38,7 +41,7 @@
                     <span class="icon-bar"> </span>
                 </button>
 
-                <a href="#!/main" class="navbar-brand"> LOGO </a>
+                <a href="#" class="navbar-brand"> LOGO </a>
             </div>
 
             <div class="navbar-collapse collapse">
@@ -53,7 +56,7 @@
                     <li> <a href="#!/main"> Go to Main </a> </li>
                     <li> <a href="#!/second"> Go to Second </a> </li>   
                     <li> <a href="#!/three"> Go to three </a> </li>   @*http://localhost:9377/Home/Index#!/three*@
-                    <li> <a href="#/errro"> Go to error </a> </li>   @*http://localhost:9377/Home/Index#!#%2Ferrro*@
+                    <li> <a href="#!/sds"> Go to error </a> </li>   @*http://localhost:9377/Home/Index#!#%2Ferrro*@
                 </ul>
             </div>
         </div>
